@@ -28,9 +28,7 @@ class _WeatherState extends State<Weather> {
             Container(
               padding: EdgeInsets.all(8),
               child: TextField(
-                decoration: InputDecoration(
-                  hintText: "Enter a City"
-                ),
+                decoration: InputDecoration(hintText: "Enter a City"),
                 onChanged: (value) {
                   setState(() {
                     city = value;
@@ -39,15 +37,23 @@ class _WeatherState extends State<Weather> {
               ),
             ),
             Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(8),
-              child: ElevatedButton(
-                child: Text("Get Weather"),
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => CityWeather()));
-                },
-              )
-            ),
+                width: double.infinity,
+                padding: EdgeInsets.all(8),
+                child: ElevatedButton(
+                  child: Text("Get Weather"),
+                  style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  )),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CityWeather(
+                                  city: city,
+                                )));
+                  },
+                )),
           ],
         ),
       ),
